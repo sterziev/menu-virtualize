@@ -1,5 +1,5 @@
-.my-cntr{
-    margin-top: 4.5rem!important;
+.my-cntr {
+    margin-top: 4.5rem !important;
 }
 
 .price-label {
@@ -8,16 +8,42 @@
 }
 
 .menu-card {
-    padding-top: 4px;
-    padding-bottom: 4px;
+    padding-top: 8px;
+    padding-bottom: 8px;
 }
 
+.card {
+    padding-bottom: 30px !important;
+    background: #fffffb;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
 
-.navbar{background:#222222;}
-.nav-item::after{content:'';display:block;width:0px;height:2px;background:#fec400;transition: 0.2s;}
-.nav-item:active::after{width:100%;}
-.navbar-dark .navbar-nav .active > .nav-link, .navbar-dark .navbar-nav .nav-link.active, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .show > .nav-link,.navbar-dark .navbar-nav .nav-link:focus, .navbar-dark .navbar-nav .nav-link:active{color:#fec400;}
-.nav-link{padding:15px 7px;transition:0.2s;}
+.navbar {
+    background: #222222;
+}
+.nav-item::after {
+    content: "";
+    display: block;
+    width: 0px;
+    height: 2px;
+    background: #fec400;
+    transition: 0.2s;
+}
+.nav-item:active::after {
+    width: 100%;
+}
+.navbar-dark .navbar-nav .active > .nav-link,
+.navbar-dark .navbar-nav .nav-link.active,
+.navbar-dark .navbar-nav .nav-link.show,
+.navbar-dark .navbar-nav .show > .nav-link,
+.navbar-dark .navbar-nav .nav-link:focus,
+.navbar-dark .navbar-nav .nav-link:active {
+    color: #fec400;
+}
+.nav-link {
+    padding: 15px 7px;
+    transition: 0.2s;
+}
 
 ul.navbar-nav {
     white-space: nowrap;
@@ -32,4 +58,28 @@ ul.navbar-nav li {
 // @media (min-width: 0px)
 .navbar-expand-lg .navbar-nav {
     flex-direction: row;
+}
+
+.img-col {
+    padding-left: 0px;
+    padding-right: 5px;
+    margin-left: -17px;
+    margin-top: -17px;
+}
+
+.img {
+    width: 100%;
+    height: 100%;
+    min-height: 100px;
+    min-width: 100px;
+    border-top-left-radius: 5px;
+    background-image: url("https://m.media-amazon.com/images/S/aplus-media/vc/cab6b08a-dd8f-4534-b845-e33489e91240._CR75,0,300,300_PT0_SX300__.jpg");
+    background-position: bottom center;
+    background-size: cover;
+}
+
+.description {
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 16px;
 }

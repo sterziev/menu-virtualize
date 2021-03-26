@@ -31,21 +31,38 @@
             <h1 ngClass='cat-{{i}}' #cat id="{{category.id}}">{{category.category}}</h1>
             <div class="menu-card" *ngFor="let item of category.items">
                 <div class="card p-3" ngClass="{{i}}">
-                    <div class="d-flex flex-row mb-3"><img src="https://i.imgur.com/ccMhxvC.png" width="70">
-                        <div class="d-flex flex-column col">
-                            <div>{{item.name}}</div>
-                            <!-- <span class="text-black-50">Payment Services</span> -->
-                            <span class="ratings"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                                    class="fa fa-star"></i><i class="fa fa-star"></i></span>
+                    <div class="row no-margins">
+                        <div class="col-4 img-col">
+                            <div class="img">
+
+                            </div>
                         </div>
-                        <div class="d-flex flex-column ml-2 price-label">
-                            12.99
+                        <div class="col-8 description">
+                            <div class="d-flex flex-row mb-3">
+                                <div class="d-flex flex-column col no-padding">
+                                    <h2>{{item.name}}</h2>
+                                </div>
+                                <h2 class="d-flex flex-column ml-2 price-label">
+                                    12.99 лв
+                                </h2>
+                            </div>
+                            <div class="desc">{{item.contents}}</div>
                         </div>
                     </div>
-                    <h6>{{item.contents}}</h6>
-                    <div class="col-4 align-self-end">
+
+                    <!-- <div class="col-4 align-self-end">
                         <span class="text-primary">View&nbsp;<i class="fa fa-angle-right"></i></span>
-                    </div>
+                    </div> -->
+                    <footer>
+                        <div class="likes">
+                            <p><i class='fa fa-heart'></i></p>
+                            <p>1.5K</p>
+                        </div>
+                        <div class="projects">
+                            <p>Projects</p>
+                            <p>154</p>
+                        </div>
+                    </footer>
                 </div>
             </div>
         </div>
