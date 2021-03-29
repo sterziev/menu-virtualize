@@ -106,9 +106,18 @@ export class ListMenuComponent implements AfterViewInit {
   @ViewChildren('catNav')
   catNav: QueryList<ElementRef>;
 
+  @ViewChildren('nav')
+  nav: QueryList<ElementRef>;
+
+  @ViewChildren('cntr')
+  cntr: QueryList<ElementRef>;
+
+  stickyTrigger;
+
   activeMap = {};
   navbarScrollOffset = 72; // compensate navbar
   additionalOffset = 50;
+  disableOnScrollStickNav = false;
 
   constructor(private cdref: ChangeDetectorRef) { }
 
@@ -118,8 +127,23 @@ export class ListMenuComponent implements AfterViewInit {
     for (const cat of this.cat) {
       currentCat = this.getCurrentCategory($event.srcElement.documentElement.scrollTop);
     }
-    console.log(currentCat?.nativeElement.id);
     this.activateCategory(currentCat?.nativeElement.id);
+
+    if (window.pageYOffset >= this.stickyTrigger && !this.disableOnScrollStickNav) {
+      this.stickNavbar(true);
+    } else if (!this.disableOnScrollStickNav) {
+      this.stickNavbar(false);
+    }
+  }
+
+  stickNavbar(stick: boolean) {
+    if (stick) {
+      this.nav.first.nativeElement.classList.add("fixed-top")
+      this.cntr.first.nativeElement.classList.add("my-cntr")
+    } else {
+      this.nav.first.nativeElement.classList.remove("fixed-top");
+      this.cntr.first.nativeElement.classList.remove("my-cntr")
+    }
   }
 
   activateCategory(id: any) {
@@ -157,6 +181,8 @@ export class ListMenuComponent implements AfterViewInit {
       this.activeMap[nav.nativeElement.id] = '';
     }
     this.cdref.detectChanges();
+
+    this.stickyTrigger = this.nav.first.nativeElement.offsetTop;
   }
 
   getActive(id: string) {
@@ -165,12 +191,18 @@ export class ListMenuComponent implements AfterViewInit {
 
   goToCategory(category: string) {
     const el = this.cat.find(c => c.nativeElement.id === category);
-    console.log(el);
+
+    this.disableOnScrollStickNav = true;
+    this.stickNavbar(true);
 
     window.scrollTo({
       left: 0,
       top: el.nativeElement.offsetParent.offsetTop - this.navbarScrollOffset,
       behavior: 'smooth'
     });
+
+    setTimeout(() => {
+      this.disableOnScrollStickNav = false;
+    }, 500);
   }
 }
