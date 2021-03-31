@@ -1,0 +1,82 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+      <div class="card card-signin my-5">
+        <div class="card-body">
+          <h5 class="card-title text-center">Sign Up</h5>
+          <form class="form-signin" (ngSubmit)="register(registerForm.value)" [formGroup]="registerForm">
+            <div class="form-label-group">
+              <input type="text" id="restaurantName" class="form-control" placeholder="Restaurant Name"
+                formControlName="restaurantName" [class.invalid]="isRestaurantNameInvalid()">
+              <label for="restaurantName" [class.invalid]="isRestaurantNameInvalid()">Restaurant Name</label>
+              <div *ngIf="isRestaurantNameInvalid()" class="invalid-cred-label">
+                Restaurant Name is required and must be at least {{minLength}} symbols!
+              </div>
+            </div>
+
+            <div class="form-label-group">
+              <input type="email" id="inputEmail" class="form-control" placeholder="Email address"
+                formControlName="email" [class.invalid]="isEmailInvalid()">
+              <label for="inputEmail" [class.invalid]="isEmailInvalid()">Email address</label>
+              <div *ngIf="isEmailInvalid()" class="invalid-cred-label">
+                Invalid Email!
+              </div>
+            </div>
+
+            <div class="form-label-group">
+              <input type="password" id="password" class="form-control" placeholder="Password"
+                formControlName="password" [class.invalid]="isPasswordInvalid()">
+              <label for="password" [class.invalid]="isPasswordInvalid()">Password</label>
+              <div *ngIf="isPasswordInvalid()" class="invalid-cred-label">
+                Invalid Password
+              </div>
+            </div>
+
+            <div class="form-label-group">
+              <input type="password" id="password" class="form-control" placeholder="Confirm Password"
+                formControlName="password2" [class.invalid]="isPassword2Invalid()">
+              <label for="password2" [class.invalid]="isPassword2Invalid()">Confirm Password</label>
+              <div *ngIf="isPassword2Invalid()" class="invalid-cred-label">
+                Invalid Password2
+              </div>
+            </div>
+
+            <div class="form-label-group">
+              <input type="text" id="firstName" class="form-control" placeholder="First Name"
+                formControlName="firstName" [class.invalid]="isFirstNameInvalid()">
+              <label for="firstName" [class.invalid]="isFirstNameInvalid()">First Name</label>
+              <div *ngIf="isFirstNameInvalid()" class="invalid-cred-label">
+                First Name is required and must be at least {{minLength}} symbols
+              </div>
+            </div>
+
+            <div class="form-label-group">
+              <input type="text" id="lastName" class="form-control" placeholder="Last Name"
+                formControlName="lastName" [class.invalid]="isLastNameInvalid()">
+              <label for="lastName" [class.invalid]="isLastNameInvalid()">Last Name</label>
+              <div *ngIf="isLastNameInvalid()" class="invalid-cred-label">
+                Last Name is required and must be at least {{minLength}} symbols
+              </div>
+            </div>
+
+            <div class="form-label-group">
+              <input type="text" id="phone" class="form-control" placeholder="Phone Number"
+                formControlName="phone" [class.invalid]="isPhoneInvalid()">
+              <label for="phone" [class.invalid]="isPhoneInvalid()">Phone Number</label>
+              <div *ngIf="isPhoneInvalid()" class="invalid-cred-label">
+                Invalid Phone Number
+              </div>
+            </div>
+
+            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign Up</button>
+            <hr class="my-4">
+            <div id="formFooter">
+              Already have an account?
+              <a class="underlineHover" href="#">Sign In</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
