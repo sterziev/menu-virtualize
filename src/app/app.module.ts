@@ -8,7 +8,8 @@ import { ListMenuComponent } from './list-menu/list-menu.component';
 import { LoginComponent } from './user/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './user/register/register.component';
-
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +21,9 @@ import { RegisterComponent } from './user/register/register.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({preventDuplicates: true, countDuplicates: true})
   ],
   providers: [],
   bootstrap: [AppComponent]

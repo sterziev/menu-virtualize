@@ -1,20 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
-  selector: 'app-signUp',
+  selector: 'app-signup',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
   public registerForm: FormGroup;
   isSubmitted = false;
   public minLength = 2;
 
   constructor(private formBuilder: FormBuilder,
-    // public toastService: ToastService,
+    private toastr: ToastrService,
     private route: ActivatedRoute,
     private router: Router) { }
 
@@ -24,8 +25,8 @@ export class RegisterComponent {
     this.registerForm = this.formBuilder.group({
       email: ['', { validators: [Validators.minLength(this.minLength), Validators.required, Validators.email], updateOn: 'blur' }],
       restaurantName: ['', { validators: [Validators.minLength(this.minLength), Validators.required], updateOn: 'submit' }],
-      password: ['', { validators: [Validators.minLength(this.minLength), Validators.required], updateOn: 'blur'}],
-      password2: ['', { validators: [Validators.minLength(this.minLength), Validators.required], updateOn: 'blur'}],
+      password: ['', { validators: [Validators.minLength(this.minLength), Validators.required], updateOn: 'blur' }],
+      password2: ['', { validators: [Validators.minLength(this.minLength), Validators.required], updateOn: 'blur' }],
       firstName: ['', { validators: [Validators.minLength(this.minLength), Validators.required], updateOn: 'submit' }],
       lastName: ['', { validators: [Validators.minLength(this.minLength), Validators.required], updateOn: 'submit' }],
       phone: ['', { validators: [Validators.minLength(this.minLength), Validators.required], updateOn: 'submit' }],
@@ -37,13 +38,14 @@ export class RegisterComponent {
   }
 
   async errorToast(message: string) {
-    console.log('error toast');
+    this.toastr.error(message, 'Error');
   }
 
   register(formValues: any) {
     this.isSubmitted = true;
 
     if (this.registerForm.invalid) {
+      this.errorToast('Form is Invalid!');
       console.log('invalid', formValues);
     } else {
       console.log(formValues);
