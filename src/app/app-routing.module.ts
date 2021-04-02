@@ -1,3 +1,4 @@
+import { AddItemComponent } from './list-menu/add-item/add-item.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
@@ -9,29 +10,33 @@ import { RegisterComponent } from './user/register/register.component';
 const routes: Routes = [
   {
     path: 'home',
-    component: ListMenuComponent
+    component: ListMenuComponent,
+  },
+  {
+    path: 'add-item',
+    component: AddItemComponent,
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
   },
   {
     path: 'signup',
-    component: RegisterComponent
+    component: RegisterComponent,
   },
   {
     path: '',
     redirectTo: '/home',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: '**',
-    redirectTo: ''
-  }
+    redirectTo: '',
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -1,9 +1,15 @@
-import { AfterViewInit, ChangeDetectorRef, ElementRef, QueryList, ViewChildren } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  ElementRef,
+  QueryList,
+  ViewChildren,
+} from '@angular/core';
 import { Component, HostListener } from '@angular/core';
 
 @Component({
   templateUrl: './list-menu.component.html',
-  styleUrls: ['./list-menu.component.scss']
+  styleUrls: ['./list-menu.component.scss'],
 })
 export class ListMenuComponent implements AfterViewInit {
   title = 'menu-virtualize';
@@ -16,27 +22,27 @@ export class ListMenuComponent implements AfterViewInit {
           name: 'Rulo Stefani',
           contents: 'Кайма, яйца, кисели краставички',
           description: 'кратко обяснение тук...... ... ..',
-          price: 12.59
+          price: 12.59,
         },
         {
           name: 'Rulo Stefani',
           contents: 'Кайма, яйца, кисели краставички',
           description: 'кратко обяснение тук...... ... ..',
-          price: 12.59
+          price: 12.59,
         },
         {
           name: 'Rulo Stefani',
           contents: 'Кайма, яйца, кисели краставички',
           description: 'кратко обяснение тук...... ... ..',
-          price: 12.59
+          price: 12.59,
         },
         {
           name: 'Rulo Stefani',
           contents: 'Кайма, яйца, кисели краставички',
           description: 'кратко обяснение тук...... ... ..',
-          price: 12.59
-        }
-      ]
+          price: 12.59,
+        },
+      ],
     },
     {
       id: 'deserti',
@@ -46,27 +52,27 @@ export class ListMenuComponent implements AfterViewInit {
           name: 'Брауни',
           contents: 'Кайма, яйца, кисели краставички',
           description: 'кратко обяснение тук...... ... ..',
-          price: 12.59
+          price: 12.59,
         },
         {
           name: 'Негърче',
           contents: 'Кайма, яйца, кисели краставички',
           description: 'кратко обяснение тук...... ... ..',
-          price: 12.59
+          price: 12.59,
         },
         {
           name: 'Циганче',
           contents: 'Кайма, яйца, кисели краставички',
           description: 'кратко обяснение тук...... ... ..',
-          price: 12.59
+          price: 12.59,
         },
         {
           name: 'Торта',
           contents: 'Кайма, яйца, кисели краставички',
           description: 'кратко обяснение тук...... ... ..',
-          price: 12.59
-        }
-      ]
+          price: 12.59,
+        },
+      ],
     },
     {
       id: 'napitki',
@@ -76,28 +82,28 @@ export class ListMenuComponent implements AfterViewInit {
           name: 'Кола',
           contents: 'Кайма, яйца, кисели краставички',
           description: 'кратко обяснение тук...... ... ..',
-          price: 12.59
+          price: 12.59,
         },
         {
           name: 'Фанта',
           contents: 'Кайма, яйца, кисели краставички',
           description: 'кратко обяснение тук...... ... ..',
-          price: 12.59
+          price: 12.59,
         },
         {
           name: 'Водка',
           contents: 'Кайма, яйца, кисели краставички',
           description: 'кратко обяснение тук...... ... ..',
-          price: 12.59
+          price: 12.59,
         },
         {
           name: 'Виски',
           contents: 'Кайма, яйца, кисели краставички',
           description: 'кратко обяснение тук...... ... ..',
-          price: 12.59
-        }
-      ]
-    }
+          price: 12.59,
+        },
+      ],
+    },
   ];
 
   @ViewChildren('cat')
@@ -119,17 +125,22 @@ export class ListMenuComponent implements AfterViewInit {
   additionalOffset = 50;
   disableOnScrollStickNav = false;
 
-  constructor(private cdref: ChangeDetectorRef) { }
+  constructor(private cdref: ChangeDetectorRef) {}
 
   @HostListener('window:scroll', ['$event'])
   onScrollEvent($event) {
     let currentCat: ElementRef;
     for (const cat of this.cat) {
-      currentCat = this.getCurrentCategory($event.srcElement.documentElement.scrollTop);
+      currentCat = this.getCurrentCategory(
+        $event.srcElement.documentElement.scrollTop
+      );
     }
     this.activateCategory(currentCat?.nativeElement.id);
 
-    if (window.pageYOffset >= this.stickyTrigger && !this.disableOnScrollStickNav) {
+    if (
+      window.pageYOffset >= this.stickyTrigger &&
+      !this.disableOnScrollStickNav
+    ) {
       this.stickNavbar(true);
     } else if (!this.disableOnScrollStickNav) {
       this.stickNavbar(false);
@@ -138,11 +149,11 @@ export class ListMenuComponent implements AfterViewInit {
 
   stickNavbar(stick: boolean) {
     if (stick) {
-      this.nav.first.nativeElement.classList.add("fixed-top")
-      this.cntr.first.nativeElement.classList.add("my-cntr")
+      this.nav.first.nativeElement.classList.add('fixed-top');
+      this.cntr.first.nativeElement.classList.add('my-cntr');
     } else {
-      this.nav.first.nativeElement.classList.remove("fixed-top");
-      this.cntr.first.nativeElement.classList.remove("my-cntr")
+      this.nav.first.nativeElement.classList.remove('fixed-top');
+      this.cntr.first.nativeElement.classList.remove('my-cntr');
     }
   }
 
@@ -156,16 +167,31 @@ export class ListMenuComponent implements AfterViewInit {
     }
 
     this.activeMap[id] = 'active';
-    this.catNav.find(c => c.nativeElement.id === id).nativeElement
-      .scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+    this.catNav
+      .find((c) => c.nativeElement.id === id)
+      .nativeElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+        inline: 'center',
+      });
   }
 
   getCurrentCategory(height: number) {
     let tempElement: ElementRef;
     for (const cat of this.cat) {
-      if (height >= cat.nativeElement.offsetParent.offsetTop - this.navbarScrollOffset - this.additionalOffset) {
+      if (
+        height >=
+        cat.nativeElement.offsetParent.offsetTop -
+          this.navbarScrollOffset -
+          this.additionalOffset
+      ) {
         tempElement = cat;
-        if (height >= this.cat.last.nativeElement.offsetParent.offsetTop - this.navbarScrollOffset - this.additionalOffset) {
+        if (
+          height >=
+          this.cat.last.nativeElement.offsetParent.offsetTop -
+            this.navbarScrollOffset -
+            this.additionalOffset
+        ) {
           return this.cat.last;
         }
       } else {
@@ -190,7 +216,7 @@ export class ListMenuComponent implements AfterViewInit {
   }
 
   goToCategory(category: string) {
-    const el = this.cat.find(c => c.nativeElement.id === category);
+    const el = this.cat.find((c) => c.nativeElement.id === category);
 
     this.disableOnScrollStickNav = true;
     this.stickNavbar(true);
@@ -198,7 +224,7 @@ export class ListMenuComponent implements AfterViewInit {
     window.scrollTo({
       left: 0,
       top: el.nativeElement.offsetParent.offsetTop - this.navbarScrollOffset,
-      behavior: 'smooth'
+      behavior: 'smooth',
     });
 
     setTimeout(() => {

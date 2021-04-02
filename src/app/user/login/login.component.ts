@@ -1,28 +1,42 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
   badCredentials = false;
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(
+    private formBuilder: FormBuilder,
     // public toastService: ToastService,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     console.log('init');
 
     this.loginForm = this.formBuilder.group({
-      email: ['', { validators: [Validators.minLength(2), Validators.required, Validators.email], updateOn: 'blur' }],
-      password: ['', { validators: [Validators.minLength(2), Validators.required], }],
+      email: [
+        '',
+        {
+          validators: [
+            Validators.minLength(2),
+            Validators.required,
+            Validators.email,
+          ],
+          updateOn: 'blur',
+        },
+      ],
+      password: [
+        '',
+        { validators: [Validators.minLength(2), Validators.required] },
+      ],
     });
   }
 
@@ -57,7 +71,7 @@ export class LoginComponent {
   login(formValues: any) {
     console.log(formValues);
     this.badCredentials = true;
-    this.controls['password'].reset();
+    this.controls.password.reset();
 
     // this.userService.login(formValues).subscribe(
     //   (data) => {

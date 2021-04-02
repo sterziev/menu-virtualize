@@ -1,0 +1,96 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+      <div class="card card-signin my-5">
+        <div class="card-body">
+          <h5 class="card-title text-center">Add new item</h5>
+          <form
+            class="form-signin"
+            (ngSubmit)="add(itemForm.value)"
+            [formGroup]="itemForm"
+          >
+  
+            <div class="row justify-content-center">
+              <div class="col align-self-center img-col text-center no-padding">
+                <img class="img no-padding" [src]="imageSrc" />
+              </div>
+            </div>
+            <div class="form-group row justify-content-center">
+              <label for="file" class="custom-file-upload">
+                <i class="fas fa-plus-circle"></i> Upload Photo
+              </label>
+              <input
+                formControlName="file"
+                id="file"
+                type="file"
+                class="form-control"
+                (change)="onFileChange($event)"
+              />
+            </div>
+
+            <div class="form-label-group">
+              <input
+                type="text"
+                id="name"
+                class="form-control"
+                placeholder="Name"
+                formControlName="name"
+                [class.invalid]=""
+              />
+              <label for="name" [class.invalid]="">Name</label>
+            </div>
+            <!-- /////////////////// -->
+
+            <div class="form-label-group">
+              <!-- <input type="text" id="category" class="form-control" placeholder="Category"
+                formControlName="category" [class.invalid]=""> -->
+              <select class="form-control" id="exampleFormControlSelect1">
+                <option selected>Category...</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+              <!-- <label for="category" [class.invalid]="">Category</label> -->
+            </div>
+
+            <div class="form-label-group">
+              <textarea
+                type="text"
+                id="description"
+                class="form-control"
+                placeholder="Description"
+                formControlName="description"
+                [class.invalid]=""
+              >
+              </textarea>
+              <label for="description" [class.invalid]="">Description</label>
+            </div>
+
+            <div class="form-label-group">
+              <input
+                type="number"
+                id="price"
+                class="form-control mid"
+                placeholder="Price"
+                formControlName="price"
+                [class.invalid]=""
+              />
+              <label for="price" [class.invalid]="">Price</label>
+              <div *ngIf="" class="invalid-cred-label">Price is invalid!</div>
+            </div>
+
+            <button
+              class="btn btn-lg btn-primary btn-block text-uppercase"
+              type="submit"
+            >
+              Add
+            </button>
+            <hr class="my-4" />
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
