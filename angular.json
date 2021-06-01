@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "menu-virtulize": {
+    "menu-virtualize": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/menu-virtulize",
+            "outputPath": "dist/menu-virtualize",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -70,18 +70,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "menu-virtulize:build"
+            "browserTarget": "menu-virtualize:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "menu-virtulize:build:production"
+              "browserTarget": "menu-virtualize:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "menu-virtulize:build"
+            "browserTarget": "menu-virtualize:build"
           }
         },
         "test": {
@@ -118,15 +118,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "menu-virtulize:serve"
+            "devServerTarget": "menu-virtualize:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "menu-virtulize:serve:production"
+              "devServerTarget": "menu-virtualize:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "menu-virtulize"
+  "defaultProject": "menu-virtualize"
 }
